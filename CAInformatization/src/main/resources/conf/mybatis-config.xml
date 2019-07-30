@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <!-- 为实体类定义一个别名 -->
+	<typeAliases>
+		<typeAlias alias="User" type="com.gmli.pojo.User" />
+		<typeAlias alias="Log" type="com.gmli.pojo.Log" />
+		<typeAlias alias="Product" type="com.gmli.pojo.Product" />
+		<typeAlias alias="OrderInfo" type="com.gmli.pojo.OrderInfo" />
+		<typeAlias alias="Repositorypojo" type="com.gmli.pojo.Repositorypojo" />
+		<typeAlias alias="Supermanager" type="com.gmli.pojo.Supermanager" />
+		<typeAlias alias="Comment" type="com.gmli.pojo.Comment" />
+		
+	</typeAliases>
+	<!-- 加入分页插件 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- config params as the following -->
+			<property name="param1" value="value1" />
+			<!-- 页面合理化 -->
+			<property name="reasonable" value="true" />
+		</plugin>
+	</plugins>
+	
+</configuration>

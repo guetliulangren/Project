@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gmli.dao.OrderInfoMapper">
+
+    <resultMap id="OrderInfoMapper" type="com.gmli.pojo.OrderInfo">
+        <id property="productsID" column="productsID"/>
+        <result property="productsType" column="productsType"/>
+        <result property="productsPrice" column="productsPrice"/>
+        <result property="productsNumber" column="productsNumber"/>
+        <result property="productsStatus" column="productsStatus"/>
+        <result property="productsName" column="productsName"/>
+        <result property="productstime" column="productstime"/>
+        <result property="productsfamername" column="productsfamername"/>
+        <result property="productsuuid" column="productsuuid"/>
+        <result property="orderprice" column="orderprice"/>
+        <result property="operatename" column="operatename"/>  
+    </resultMap>
+    
+  <!--添加产品信息信息-->
+    <insert id="insertorder"      parameterType="OrderInfo">
+         INSERT  INTO orderinfo (productsType,productsPrice,productsNumber,productsStatus,productsName,productstime,productsfamername,productsphone,productsaddress,productsuuid,orderprice,operatename) VALUES (#{productsType},#{productsPrice},#{productsNumber},#{productsStatus},#{productsName},#{productstime},#{productsfamername},#{productsphone},#{productsaddress},#{productsuuid},#{orderprice},#{operatename})
+    </insert>
+    <select id="selectorder" resultMap="OrderInfoMapper">
+    
+     select *from orderinfo
+    </select>
+    
+    <select id="selectgraph" resultMap="OrderInfoMapper">
+    
+     select productsfamername ,sum(orderprice) as  orderprice from orderinfo group by productsfamername
+    </select>
+     
+    <select id="selectproductgrap" resultMap="OrderInfoMapper">
+    
+     select productsName ,sum(orderprice) as  orderprice from orderinfo WHERE productsfamername=#{productsfamername} group by productsName
+    </select>
+     
+     <select id="selectdetail" resultMap="OrderInfoMapper">
+    
+     SELECT productsName ,sum(productsNumber) as productsNumber from orderinfo group by productsName
+    </select>
+    
+</mapper>

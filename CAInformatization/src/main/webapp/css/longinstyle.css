@@ -1,0 +1,26 @@
+body{
+    background: url("../photo/longin.jpg");
+    animation-name:mylo;
+    animation-duration:14s;
+    /*设置切换时间*/
+    animation-delay:2s;
+    /**/
+    animation-iteration-count:infinite;
+    /**/
+    animation-play-state:running;
+    /**/
+}
+/**/
+@keyframes mylo
+{
+    0%   {background:url("../photo/main.png");}
+    34%  {background:url("../photo/log2.jpg");}
+    67%  {background:url("../photo/py.jpg");}
+    100% {background:url("../photo/longin.jpg");}
+}
+.form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
+/**/
+.fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
+input[type="text"],input[type="password"]{padding-left:26px;}
+.checkbox{padding-left:21px;}
+

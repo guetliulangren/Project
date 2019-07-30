@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gmli.dao.CommentMapper">
+ 
+    <resultMap id="CommentMapper" type="com.gmli.pojo.Comment">
+        <id property="reportid" column="reportid"/>
+        <result property="reportname" column="reportname"/>
+        <result property="reporttitle" column="reporttitle"/>
+        <result property="reportcomment" column="reportcomment"/>
+    </resultMap>
+    
+ <select id="selectcomment"   resultMap="CommentMapper">
+ 
+   select *from comment
+ 
+ </select>
+ 
+  <!--添加信息-->
+    <insert id="addcomment"      parameterType="Comment">
+        INSERT  INTO comment (reportname,reporttitle,reportcomment,reporttime) VALUES (#{reportname},#{reporttitle},#{reportcomment},#{reporttime})
+    </insert>
+    
+</mapper>

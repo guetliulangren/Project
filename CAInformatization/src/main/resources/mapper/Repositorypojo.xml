@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gmli.dao.RepositoryMapper">
+
+    <resultMap id="RepositorypojoMapper" type="com.gmli.pojo.Repositorypojo">
+        <id property="productsID" column="productsID"/>
+        <result property="productsType" column="productsType"/>
+        <result property="productsPrice" column="productsPrice"/>
+        <result property="productsNumber" column="productsNumber"/>
+        <result property="productsStatus" column="productsStatus"/>
+        <result property="productsName" column="productsName"/>
+        <result property="productstime" column="productstime"/>
+        <result property="productsuuid" column="productsuuid"/>
+        <result property="orderprice" column="orderprice"/>
+    </resultMap>
+    
+    <select id="queryrepositorybyname" resultMap="RepositorypojoMapper">
+    
+       select *from repository where productsName=#{productsName}
+    </select>
+     <select id="queryall" resultMap="RepositorypojoMapper">
+    
+       select *from repository
+    </select>
+  <!--添加产品信息信息-->
+    <insert id="insertrepositorypojo"      parameterType="Repositorypojo">
+         INSERT  INTO repository (productsType,productsPrice,productsNumber,productsStatus,productsName,productstime,productsphone,productsaddress,productsuuid,orderprice) VALUES (#{productsType},#{productsPrice},#{productsNumber},#{productsStatus},#{productsName},#{productstime},#{productsphone},#{productsaddress},#{productsuuid},#{orderprice})
+    </insert>
+   <!-- 更新仓库信息 -->
+     <update id="updaterepositorypojo" parameterType="Repositorypojo">
+    
+     UPDATE repository  SET productsNumber=#{productsNumber},orderprice=#{orderprice} WHERE  productsName=#{productsName}
+    
+    </update>
+</mapper>

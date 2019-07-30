@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gmli.dao.ProductMapper">
+
+    <resultMap id="productMapper" type="com.gmli.pojo.Product">
+        <id property="productsID" column="productsID"/>
+        <result property="productsType" column="productsType"/>
+        <result property="productsPrice" column="productsPrice"/>
+        <result property="productsNumber" column="productsNumber"/>
+        <result property="productsStatus" column="productsStatus"/>
+        <result property="productsName" column="productsName"/>
+        <result property="productstime" column="productstime"/>
+        <result property="productsfamername" column="productsfamername"/>
+         <result property="productsuuid" column="productsuuid"/>
+        
+    </resultMap>
+  <!--添加产品信息信息-->
+    <insert id="insertproduct"      parameterType="Product">
+        INSERT  INTO products (productsType,productsPrice,productsNumber,productsStatus,productsName,productstime,productsfamername,productsphone,productsaddress,productsuuid) VALUES (#{productsType},#{productsPrice},#{productsNumber},#{productsStatus},#{productsName},#{productstime},#{productsfamername},#{productsphone},#{productsaddress},#{productsuuid})
+    </insert>
+    <select id="selectproduct" resultMap="productMapper">
+    
+     select *from products where productsfamername=#{productsfamername}
+    </select>
+    <select id="selectproductbyUUID" resultMap="productMapper">
+    
+     select *from products where productsuuid=#{productsuuid}
+    </select>
+    
+   
+    <select id="queryproduct" resultMap="productMapper">
+    
+     select *from products where productsStatus=#{productsStatus}
+    </select>
+    <update id="upproductinfo" parameterType="Product">
+    
+    
+     UPDATE products SET productsStatus=#{productsStatus} WHERE  productsuuid=#{productsuuid}
+    
+    </update>
+    <update id="updaterepertory" parameterType="Product">
+    
+    
+     UPDATE products SET productsNumber=#{productsNumber} WHERE  productsuuid=#{productsuuid}
+    
+    </update>
+</mapper>

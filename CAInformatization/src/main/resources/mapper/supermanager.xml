@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gmli.dao.SupermanagerMapper">
+
+    <resultMap id="supermanager" type="com.gmli.pojo.Supermanager">
+        <id property="userID" column="userID"/>
+        <result property="userName" column="userName"/>
+        <result property="password" column="password"/>
+        <result property="address" column="address"/>
+        <result property="phoneNumber" column="phoneNumber"/>
+        <result property="roleID" column="roleID"/>
+    </resultMap>
+  
+  
+    <!-- 连接查询数据库信息 -->
+    <select id="getUserlogin"   resultMap="supermanager" parameterType="String">
+
+      select * from supermanage where  userName=#{userName}
+    </select>
+  
+    
+   <!-- 修改用户密码 -->
+    <update id="updater"   parameterType="String">
+    
+    UPDATE supermanage  SET password=#{password} WHERE  userName=#{userName}
+    
+    </update>
+
+   
+     
+
+    
+</mapper>
